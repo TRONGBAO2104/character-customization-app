@@ -17,6 +17,9 @@ const total = {
 };
 
 function App() {
+  const [selected, setSelected] = useState({ body: null, eyes: null });
+  console.log(selected);
+
   const [body, setBody] = useState({ imgLink: "./character/body/1.png" });
   const [eyes, setEyes] = useState({ imgLink: "./character/eyes/1.png" });
   const [mouths, setMouths] = useState({ imgLink: "./character/mouths/1.png" });
@@ -35,6 +38,7 @@ function App() {
   });
 
   const handleClick = (item) => {
+    console.log(item);
     const bodyItem = item.id.includes("body");
     const eyesItem = item.id.includes("eyes");
     const hairItem = item.id.includes("hair");
@@ -43,21 +47,33 @@ function App() {
     const clothes2Item = item.id.includes("clothes2");
     const glassesItem = item.id.includes("glasses");
 
-    bodyItem
-      ? setBody({ ...item })
-      : eyesItem
-      ? setEyes({ ...item })
-      : hairItem
-      ? setHair({ ...item })
-      : mouthsItem
-      ? setMouths({ ...item })
-      : clothes1Item
-      ? setClothes1({ ...item })
-      : clothes2Item
-      ? setClothes2({ ...item })
-      : glassesItem
-      ? setGlasses({ ...item })
-      : setHats({ ...item });
+    switch (item) {
+      case bodyItem:
+        setBody(item);
+        setSelected({ ...selected, body: item });
+        break;
+      case eyesItem:
+        setEyes(item);
+        setSelected({ ...selected, eyes: item });
+        break;
+      case hairItem:
+        setHair(item);
+        break;
+      case mouthsItem:
+        setMouths(item);
+        break;
+      case clothes1Item:
+        setClothes1(item);
+        break;
+      case clothes2Item:
+        setClothes2(item);
+        break;
+      case glassesItem:
+        setGlasses(item);
+        break;
+      default:
+        setHats(item);
+    }
   };
 
   const handleRandomClick = () => {
@@ -126,49 +142,65 @@ function App() {
               link="body"
               total={total.body}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="eyes"
               link="eyes"
               total={total.eyes}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
-            <CustomList
+            {/* <CustomList
               name="mouths"
               link="mouths"
               total={total.mouths}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="hair"
               link="hair"
               total={total.hair}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="clothes1"
               link="clothes/layer_1"
               total={total.clothing1}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="clothes2"
               link="clothes/layer_2"
               total={total.clothing2}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="glasses"
               link="accessories/glasses"
               total={total.glasses}
               handleClick={handleClick}
+              setSelected={setSelected}
+              selected={selected}
             />
             <CustomList
               name="hats"
               link="accessories/hats"
               total={total.hats}
               handleClick={handleClick}
-            />
+              setSelected={setSelected}
+              selected={selected}
+            /> */}
           </div>
         </div>
       </div>
