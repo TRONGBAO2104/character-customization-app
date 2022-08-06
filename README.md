@@ -1,4 +1,4 @@
-# CHARACTER CUSTOMIZATION GAME
+# CHARACTER CUSTOMIZATION GAME (COMPLICATED WAY)
 
 **Demo App:** https://character-customization-game-by-baobao.netlify.app/
 
